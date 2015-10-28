@@ -1,24 +1,34 @@
-class DiagonalDisproportion(object):
+class Drbalance(object):
 
-    def __init__(self, matrix):
-        self.matrix = [list(s) for s in matrix]
-        self.len = len(self.matrix)
-
-    def get_disproportion(self):
-        if self.len == 1:
+    def lesscng(self, s, k):
+        if k == 0:
             print 0
             return
-        dia = [int(e[0][e[1]]) for e in zip(self.matrix, xrange(self.len))]
-        col = [int(e[0][e[1]]) for e in zip(
-                                    self.matrix, xrange(self.len-1, -1, -1))]
-        print sum(dia) - sum(col)
+        ls = [s for s in s]
+        p_ts = ls.count('+')
+        n_ts = ls.count('-')
+        
+        if p_ts >= n_ts:
+            tms = n_ts
+            src = '+'
+            chg = '-'
+        else:
+            tms = p_ts
+            src = '-'
+            chg = '+'
 
-cls = DiagonalDisproportion(["190","828","373"])
-cls.get_disproportion() # 1
-cls = DiagonalDisproportion(["9000","0120","0000","9000"])
-cls.get_disproportion() # -1
-cls = DiagonalDisproportion(["6"])
-cls.get_disproportion() # 0
-cls = DiagonalDisproportion(["7748297018","8395414567","7006199788","5446757413","2972498628",
-"0508396790","9986085827","2386063041","5687189519","7729785238"])
-cls.get_disproportion() # -24
+        for _ in xrange(tms):
+            ls.remove('+')
+            ls.remove('-')
+
+        ls.remove('-')
+        c = len(ls)
+        t = 0
+        while c != 0:
+            c -= 2
+            t += 1
+
+        print t
+
+cls = Drbalance()
+cls.lesscng("+-+----", 3) # 1
