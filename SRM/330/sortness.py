@@ -17,13 +17,3 @@ class Sortness(object):
                 len([e for e in r_list if n > e])
             )
         return sum(ret) / len(ret)
-
-# tests
-s = Sortness([3,2,1,4,6,7,5,8])
-print s.get_sortness() # 1.25
-s = Sortness([1,2,3])
-print s.get_sortness() # 0.0
-s = Sortness([5,4,3,2,1])
-print s.get_sortness() # 4.0
-s = Sortness([1,5,8,7,9,6,10,12,11,3,4,2])
-print s.get_sortness() # 5.16666666667
